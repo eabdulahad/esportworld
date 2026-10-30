@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Esports World Bhagalpur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Hind:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#0f121a;--surface:#171b26;--surface2:#1f2432;--line:#2b3144;--fg:#eaedf5;--muted:#9aa3b8;--accent:#ff9f1c;--accent-fg:#1a1200;--ok:#35d0a0;--warn:#f2c14e;--bad:#ff6b6b;
+--display:'Rajdhani','Arial Narrow',sans-serif;--body:'Hind','Segoe UI',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;color-scheme:dark}
+@media (prefers-color-scheme: light){:root{--bg:#f4f5f9;--surface:#fff;--surface2:#eceef5;--line:#d5d9e6;--fg:#151826;--muted:#5b6478;--accent:#d9730d;--accent-fg:#fff;--ok:#12805c;--warn:#8a6500;--bad:#c23b3b;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto;padding-block:18px 40px;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;letter-spacing:.01em}
+h1{font-size:clamp(34px,7vw,56px);font-weight:700;text-transform:uppercase}
+h2{font-size:26px;font-weight:700;text-transform:uppercase}
+h3{font-size:20px;font-weight:600}
+p{margin:0} a{color:var(--accent)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.06em}
+.brand b{color:var(--accent)}
+.tag{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.hero{display:flex;flex-direction:column;gap:12px;padding-block:8px 4px}
+.hero p{color:var(--muted);max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;padding:4px 10px;border:1px solid var(--line);border-radius:4px;color:var(--muted);background:var(--surface)}
+.chip.hot{border-color:var(--accent);color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px}
+.card .desc{color:var(--muted);font-size:14px}
+.game{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.btn{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--accent);background:var(--accent);color:var(--accent-fg);padding:9px 16px;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.small{font-size:14px;padding:5px 10px;min-height:32px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.steps{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.step{flex:1 1 120px;padding:10px 12px;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-right:1px solid var(--line);display:flex;gap:8px;align-items:center}
+.step:last-child{border-right:0}
+.step i{font-style:normal;font-family:var(--mono);font-size:12px;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
+.step.on{color:var(--fg);background:var(--surface2)}
+.step.on i{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.step.done i{background:var(--ok);color:#06231a;border-color:var(--ok)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:16px;max-width:640px}
+label{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:500;min-width:0}
+label small{color:var(--muted);font-weight:400}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px 12px;min-height:42px;width:100%;min-width:0}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.pre{display:flex;align-items:stretch}
+.pre span{display:grid;place-items:center;padding:0 12px;background:var(--surface2);border:1px solid var(--line);border-right:0;border-radius:4px 0 0 4px;font-family:var(--mono);font-size:14px;color:var(--muted)}
+.pre input{border-radius:0 4px 4px 0}
+.msg{font-size:14px;color:var(--bad);min-height:1.2em}
+.note{font-size:14px;color:var(--muted)}
+.pay{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+@media (max-width:520px){.pay{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.qr{background:#fff;padding:10px;border-radius:6px;width:176px;height:176px;display:grid;place-items:center}
+.qr svg{width:100%;height:100%;display:block}
+.amount{font-family:var(--display);font-size:56px;font-weight:700;line-height:1;color:var(--accent)}
+.mono{font-family:var(--mono);font-size:14px;word-break:break-all}
+.copy{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.copy .mono{flex:1 1 180px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.sum{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.sum dt{color:var(--muted)} .sum dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.big{font-family:var(--display);font-size:30px;font-weight:700;text-transform:uppercase;color:var(--ok)}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:9px 16px;border-radius:4px;font-size:14px;z-index:20;max-width:calc(100vw - 32px)}
+</style></head><body>
+<div class="wrap" id="app"></div>
+<div id="toast" hidden></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+(function(){
+const FIREBASE={apiKey:"AIzaSyC9ZTuNJPPhLEblaHHO6JgVROyvd4VUe4U",authDomain:"esportworld-edd7a.firebaseapp.com",projectId:"esportworld-edd7a",storageBucket:"esportworld-edd7a.firebasestorage.app",messagingSenderId:"473185523696",appId:"1:473185523696:web:0ade049a415a5ec3fd6f35",measurementId:"G-EFYTVFP2HX"};
+
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rupee=n=>'₹'+Number(n).toLocaleString('en-IN');
+const MODES={Solo:1,Duo:2,Squad:4,'1v1':1,Custom:0};
+
+let cfg={upiId:'abdulahad6216@ibl',payee:'Esports World Bhagalpur',fee:10,email:'esportworld4455@gmail.com',paytm:'',phonepe:'',gpay:'',bankHolder:'',bankName:'',bankAcc:'',bankIfsc:''};
+let db=null,uid=null,forms=[];
+let c={step:1,gate:{},msg:'',busy:false,mine:null};
+
+function mk(id,title,game,mode,nameLabel,idLabel,order){return{id,title,game,mode,teamSize:MODES[mode]||1,nameLabel,idLabel,prize:'',entryFee:0,schedule:'',slots:'',note:'',extra:[],open:true,order}}
+const DEFAULTS=[
+ mk('bgmi-solo','BGMI Solo','BGMI','Solo','In-game name','BGMI character ID',1),
+ mk('bgmi-duo','BGMI Duo','BGMI','Duo','In-game name','BGMI character ID',2),
+ mk('bgmi-squad','BGMI Squad','BGMI','Squad','In-game name','BGMI character ID',3),
+ mk('freefire-solo','Free Fire Solo','Free Fire','Solo','In-game name','Free Fire UID',4),
+ mk('freefire-duo','Free Fire Duo','Free Fire','Duo','In-game name','Free Fire UID',5),
+ mk('freefire-squad','Free Fire Squad','Free Fire','Squad','In-game name','Free Fire UID',6),
+ mk('chess-1v1','Chess 1v1','Chess','1v1','Username','Chess.com or Lichess profile link',7),
+ mk('8ball-1v1','8 Ball Pool 1v1','8 Ball Pool','1v1','Player name','8 Ball Pool unique ID',8)];
+const shownForms=()=>forms.length?forms:DEFAULTS;
+
+function fieldsFor(f){
+  const out=[],n=Math.max(1,+f.teamSize||1);
+  if(n>1)out.push({key:'Team name',label:'Team name',type:'text',required:true});
+  for(let i=1;i<=n;i++){
+    const p=n>1?'Player '+i+' ':'';
+    out.push({key:p+f.nameLabel,label:p+(f.nameLabel||'In-game name')+(n>1&&i===1?' (team leader)':''),type:'text',required:true});
+    out.push({key:p+f.idLabel,label:p+(f.idLabel||'Game ID'),type:'text',required:true});
+  }
+  (f.extra||[]).forEach(x=>{if(x.label)out.push({key:x.label,label:x.label,type:x.type||'text',required:!!x.required,options:x.options||''})});
+  return out;
+}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>{el.hidden=true},2400)}
+async function copy(text){try{await navigator.clipboard.writeText(text);toast('Copied')}catch(e){toast('Copy blocked here. Select the text and copy it.')}}
+const route=()=>{const h=location.hash.slice(1);if(h.indexOf('f-')===0)return{t:'form',id:h.slice(2)};return{t:'home'}};
+
+function header(sub){return '<div class="top"><a class="brand" href="#" style="text-decoration:none;color:inherit">Esports World <b>Bhagalpur</b></a><span class="tag">'+esc(sub)+'</span></div>'}
+function footer(){return '<div class="foot"><span>Entry fee '+rupee(cfg.fee)+' per registration, paid online. Contact: '+esc(cfg.email)+'</span></div>'}
+
+function vHome(){
+  const list=shownForms().filter(f=>f.open!==false);
+  const cards=list.map(f=>{
+    const team=f.teamSize>1?f.teamSize+' players':'1 player';
+    return '<article class="card"><span class="game">'+esc(f.game)+'</span><h3>'+esc(f.title)+'</h3>'
+    +'<div class="meta"><span class="chip">'+esc(f.mode)+'</span><span class="chip">'+team+'</span>'+(f.slots?'<span class="chip">'+esc(f.slots)+' slots</span>':'')+(+f.entryFee>0?'<span class="chip">Entry '+rupee(f.entryFee)+'</span>':'')+'</div>'
+    +(f.prize?'<p class="desc">Prize pool: '+esc(f.prize)+'</p>':'')+(f.schedule?'<p class="desc">When: '+esc(f.schedule)+'</p>':'')+(f.note?'<p class="desc">'+esc(f.note)+'</p>':'')
+    +'<a class="btn" href="#f-'+esc(f.id)+'">Register</a></article>';}).join('');
+  return header('Bhagalpur, Bihar')
+  +'<section class="hero"><h1>Pick your game.<br>Play for Bhagalpur.</h1><p>Choose a tournament, pay the '+rupee(cfg.fee)+' entry fee online, then fill in your team details.</p>'
+  +'<div class="chips"><span class="chip hot">Entry '+rupee(cfg.fee)+'</span><span class="chip">UPI payment</span><span class="chip">BGMI · Free Fire · Chess · 8 Ball Pool</span></div></section>'
+  +(list.length?'<div class="grid">'+cards+'</div>':'<div class="panel"><h3>No tournaments open right now</h3><p class="note">Check back soon.</p></div>')+footer();
+}
+function stepper(n){
+  const names=['Your details','Pay '+rupee(cfg.fee),'Team form','Pay entry fee','Done'];
+  return '<div class="steps">'+names.map((x,i)=>'<div class="step '+(i+1===n?'on':i+1<n?'done':'')+'"><i>'+(i+1<n?'✓':i+1)+'</i>'+esc(x)+'</div>').join('')+'</div>';
+}
+function appBtns(amt,title){
+  const ph=(c.gate&&c.gate.phone)||'',tn=('EWB '+ph+' '+title).slice(0,50);
+  const q='pa='+encodeURIComponent(cfg.upiId)+'&pn='+encodeURIComponent(cfg.payee||'')+'&am='+Number(amt).toFixed(2)+'&cu=INR&tn='+encodeURIComponent(tn);
+  const b=(l,u)=>'<a class="btn" href="'+esc(u)+'">'+l+'</a>';
+  return '<div style="display:flex;flex-direction:column;gap:8px"><div class="note">Tap your app to pay '+rupee(amt)+' directly:</div>'+b('Pay with Google Pay','tez://upi/pay?'+q)+b('Pay with PhonePe','phonepe://pay?'+q)+b('Pay with Paytm','paytmmp://pay?'+q)+'<a class="btn ghost" href="upi://pay?'+esc(q)+'">Other UPI app</a></div>';
+}
+function otherPay(){
+  const cp=(l,v)=>'<div class="copy"><span class="mono">'+esc(l)+': '+esc(v)+'</span><button type="button" class="btn ghost small" data-act="copy" data-v="'+esc(v)+'">Copy</button></div>';
+  const r=[];
+  if(cfg.paytm)r.push(cp('Paytm',cfg.paytm));
+  if(cfg.phonepe)r.push(cp('PhonePe',cfg.phonepe));
+  if(cfg.gpay)r.push(cp('Google Pay',cfg.gpay));
+  if(cfg.bankAcc&&cfg.bankIfsc){r.push('<div class="note">Bank transfer (IMPS / NEFT) to '+esc(cfg.bankHolder||cfg.payee)+(cfg.bankName?', '+esc(cfg.bankName):'')+'</div>');r.push(cp('A/C',cfg.bankAcc));r.push(cp('IFSC',cfg.bankIfsc))}
+  return r.length?'<div style="display:flex;flex-direction:column;gap:8px"><h3>Other ways to pay</h3>'+r.join('')+'</div>':'';
+}
+function vForm(id){
+  const f=shownForms().find(x=>x.id===id);
+  if(!f)return header('Registration')+'<div class="panel"><h2>Tournament not found</h2><p class="note">This link may be old.</p><a class="btn" href="#">See all games</a></div>'+footer();
+  const head=header('Registration')+'<div class="hero" style="padding-top:0"><span class="game">'+esc(f.game)+' · '+esc(f.mode)+'</span><h1 style="font-size:clamp(30px,6vw,44px)">'+esc(f.title)+'</h1>'
+   +(f.prize||f.schedule?'<div class="chips">'+(f.prize?'<span class="chip">Prize '+esc(f.prize)+'</span>':'')+(f.schedule?'<span class="chip">'+esc(f.schedule)+'</span>':'')+'</div>':'')+'</div>';
+  if(f.open===false)return head+'<div class="panel"><h3>Registrations are closed</h3><p class="note">The organiser has closed this form.</p><a class="btn ghost" href="#">Other games</a></div>'+footer();
+  let body='';
+  if(c.step===1){
+    const g=c.gate;
+    body='<form class="panel" data-form="gate"><h2>Your details</h2><p class="note">Enter these to start. The form opens after the '+rupee(cfg.fee)+' entry fee.</p>'
+     +'<div class="row"><label>Full name<input id="g-name" autocomplete="name" value="'+esc(g.name)+'" required></label>'
+     +'<label>Phone number<div class="pre"><span>+91</span><input id="g-phone" inputmode="numeric" maxlength="10" autocomplete="tel-national" value="'+esc(g.phone)+'" required></div></label></div>'
+     +'<label>Email address<input id="g-email" type="email" autocomplete="email" value="'+esc(g.email)+'" required></label>'
+     +'<div class="msg">'+esc(c.msg)+'</div><button class="btn" type="submit">Continue to payment</button></form>';
+  }else if(c.step===2){
+    const ok=!!cfg.upiId;
+    body='<form class="panel" data-form="pay"><h2>Pay the entry fee</h2>'
+     +(ok?'<div class="pay"><div class="qr" id="qr"></div><div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div class="amount">'+rupee(cfg.fee)+'</div>'
+       +'<div class="note">Pay to '+esc(cfg.payee)+'</div><div class="copy"><span class="mono">'+esc(cfg.upiId)+'</span><button type="button" class="btn ghost small" data-act="copy" data-v="'+esc(cfg.upiId)+'">Copy UPI ID</button></div>'
+       +appBtns(Number(cfg.fee),f.title)+'</div></div>'+otherPay()
+      :'<p class="msg">The organiser has not added a UPI ID yet. Please try again later.</p>')
+     +'<div class="msg">'+esc(c.msg)+'</div><div class="acts"><button class="btn" type="submit" '+(ok?'':'disabled')+'>I have paid. Open the form</button><button class="btn ghost" type="button" data-act="back1">Back</button></div>'
+     +'<p class="note">After paying, press the button above. Your entry is confirmed once the organiser sees your payment.</p></form>';
+  }else if(c.step===3){
+    const fs=fieldsFor(f);
+    body='<form class="panel" data-form="team"><h2>Team details</h2><div class="row">'
+     +fs.map((x,i)=>{
+       const v=(c.mine&&c.mine.answers&&c.mine.answers[x.key])||'';
+       let inp;
+       if(x.type==='choice')inp='<select id="a-'+i+'"><option value="">Select</option>'+String(x.options).split(',').map(o=>o.trim()).filter(Boolean).map(o=>'<option'+(o===v?' selected':'')+'>'+esc(o)+'</option>').join('')+'</select>';
+       else inp='<input id="a-'+i+'" type="'+(x.type==='number'?'number':'text')+'" value="'+esc(v)+'">';
+       return '<label>'+esc(x.label)+(x.required?'':' <small>(optional)</small>')+inp+'</label>';
+     }).join('')+'</div>'
+     +(f.note?'<p class="note">'+esc(f.note)+'</p>':'')
+     +'<div class="msg">'+esc(c.msg)+'</div><button class="btn" type="submit">Submit registration</button></form>';
+  }else if(c.step===4){
+    const amt=Number(f.entryFee)||0;
+    body='<form class="panel" data-form="pay2"><h2>Pay tournament entry fee</h2><p class="note">Your form is saved. Pay the entry fee for '+esc(f.title)+' to confirm your slot.</p>'
+     +'<div class="pay"><div class="qr" id="qr" data-amt="'+amt+'"></div><div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div class="amount">'+rupee(amt)+'</div><div class="note">Pay to '+esc(cfg.payee)+'</div>'
+     +'<div class="copy"><span class="mono">'+esc(cfg.upiId)+'</span><button type="button" class="btn ghost small" data-act="copy" data-v="'+esc(cfg.upiId)+'">Copy UPI ID</button></div>'+appBtns(amt,f.title)+'</div></div>'
+     +otherPay()+'<div class="msg">'+esc(c.msg)+'</div><button class="btn" type="submit">I have paid</button></form>';
+  }else{
+    const m=c.mine||{};
+    body='<div class="panel"><span class="big">You are registered</span><dl class="sum"><dt>Game</dt><dd>'+esc(f.title)+'</dd><dt>Name</dt><dd>'+esc(m.name)+'</dd><dt>Phone</dt><dd>'+esc(m.phone)+'</dd><dt>Payment</dt><dd>Sent for organiser check</dd></dl>'
+     +'<p class="note">The organiser will verify your payment and share the match room details with the phone number or email you gave.</p><a class="btn ghost" href="#">Register for another game</a></div>';
+  }
+  const warn=(!db||!uid)?'<p class="note" style="color:var(--warn)">Connecting to the server… if this stays, check your internet and reload.</p>':'';
+  return head+stepper(c.step)+warn+body+footer();
+}
+function render(){
+  const r=route(),app=document.getElementById('app');
+  app.innerHTML=r.t==='form'?vForm(r.id):vHome();
+  const q=document.getElementById('qr');
+  if(q&&window.qrcode&&cfg.upiId){
+    try{
+      const link='upi://pay?pa='+encodeURIComponent(cfg.upiId)+'&pn='+encodeURIComponent(cfg.payee||'')+'&am='+Number(q.getAttribute('data-amt')||cfg.fee).toFixed(2)+'&cu=INR';
+      const qr=window.qrcode(0,'M');qr.addData(link);qr.make();q.innerHTML=qr.createSvgTag(4,0);
+    }catch(e){q.textContent='QR unavailable'}
+  }else if(q){q.innerHTML='<span class="note" style="color:#333">Use the UPI ID</span>'}
+}
+function soft(){
+  const a=document.activeElement;
+  if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)&&document.getElementById('app').contains(a))return;
+  render();
+}
+
+/* ---------- data (one Firestore doc per player per game: registrations/{uid}_{formId}) ---------- */
+function subscribe(){
+  const bad=e=>console.warn(e&&e.code);
+  db.doc('settings/main').onSnapshot(s=>{if(s.exists)cfg=Object.assign({},cfg,s.data());soft()},bad);
+  db.collection('forms').onSnapshot(s=>{forms=s.docs.map(d=>Object.assign({id:d.id},d.data())).sort((a,b)=>(a.order||0)-(b.order||0));soft()},bad);
+}
+const regRef=formId=>db.doc('registrations/'+uid+'_'+formId);
+async function saveEntry(formId,patch){await regRef(formId).set(Object.assign({uid:uid,formId:formId},patch),{merge:true})}
+
+async function enterRoute(){
+  const r=route();
+  if(r.t==='form'){
+    let g={name:'',phone:'',email:''};
+    try{const s=JSON.parse(localStorage.getItem('ewb-gate')||'null');if(s)g=Object.assign(g,s)}catch(e){}
+    c={step:1,gate:g,msg:'',busy:false,mine:null};
+    render();
+    if(db&&uid){
+      try{
+        const s=await regRef(r.id).get();
+        const e=s.exists&&s.data();
+        if(e&&(e.stage)&&route().id===r.id){
+          c.mine=e;c.gate={name:e.name,phone:e.phone,email:e.email};
+          const ff=shownForms().find(x=>x.id===r.id);
+          c.step=e.stage==='registered'?((ff&&+ff.entryFee>0&&!e.entryPaidAt)?4:5):3;
+          render();
+        }
+      }catch(err){}
+    }
+  }else render();
+}
+
+const app=document.getElementById('app');
+app.addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const kind=ev.target.getAttribute('data-form'),r=route();
+  if(kind==='gate'){
+    const name=document.getElementById('g-name').value.trim(),phone=document.getElementById('g-phone').value.trim(),email=document.getElementById('g-email').value.trim();
+    c.gate={name,phone,email};
+    if(name.length<2)c.msg='Enter your full name.';
+    else if(!/^[6-9]\d{9}$/.test(phone))c.msg='Enter a 10 digit Indian mobile number.';
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))c.msg='Enter a valid email address.';
+    else{c.msg='';c.step=2;try{localStorage.setItem('ewb-gate',JSON.stringify(c.gate))}catch(e){}}
+    render();
+  }else if(kind==='pay'){
+    if(!db||!uid){c.msg='Still connecting. Wait a moment and press again.';render();return}
+    const f=shownForms().find(x=>x.id===r.id);
+    const entry={formTitle:f?f.title:r.id,name:c.gate.name,phone:c.gate.phone,email:c.gate.email,utr:'',method:'UPI',amount:+cfg.fee||10,payStatus:'pending',stage:'paid',createdAt:Date.now(),answers:{}};
+    try{await saveEntry(r.id,entry);c.mine=entry;c.msg='';c.step=3}
+    catch(e){c.msg='Could not save your payment details. Try again, or contact the organiser.'}
+    render();
+  }else if(kind==='team'){
+    const f=shownForms().find(x=>x.id===r.id),fs=fieldsFor(f),answers={};let miss='';
+    fs.forEach((x,i)=>{const v=document.getElementById('a-'+i).value.trim();if(x.required&&!v&&!miss)miss=x.label;if(v)answers[x.key]=v});
+    if(miss){c.msg='Fill in: '+miss;render();return}
+    try{await saveEntry(r.id,{answers,stage:'registered',registeredAt:Date.now()});c.mine=Object.assign({},c.mine,{answers,stage:'registered'});c.msg='';c.step=(+f.entryFee>0)?4:5}
+    catch(e){c.msg='Could not save the form. Try again.'}
+    render();
+  }else if(kind==='pay2'){
+    const f=shownForms().find(x=>x.id===r.id);
+    try{await saveEntry(r.id,{entryUtr:'',entryMethod:'UPI',entryAmount:+f.entryFee||0,entryPaidAt:Date.now()});c.mine=Object.assign({},c.mine,{entryPaidAt:Date.now()});c.msg='';c.step=5}
+    catch(e){c.msg='Could not save the payment. Try again.'}
+    render();
+  }
+});
+app.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-act]');if(!b)return;
+  const a=b.getAttribute('data-act'),v=b.getAttribute('data-v');
+  if(a==='copy')return copy(v);
+  if(a==='back1'){c.step=1;c.msg='';return render()}
+});
+window.addEventListener('hashchange',enterRoute);
+
+render();
+try{
+  firebase.initializeApp(FIREBASE);
+  db=firebase.firestore();
+  subscribe();
+  firebase.auth().onAuthStateChanged(u=>{if(u){uid=u.uid;enterRoute()}});
+  firebase.auth().signInAnonymously().catch(e=>{console.warn(e);toast('Could not connect. Please reload.')});
+}catch(e){console.warn(e)}
+})();
+</script>
+</body></html>
